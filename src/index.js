@@ -20,11 +20,15 @@ export const isEvenGame = () => {
   const userName = greeting();
   console.log('Answer "yes" if the number is even, otherwise answer is "no".');
   const arr = [];
-  for (let a = 0; a < 3; a += 1) {
-    arr.push(getRandomInt(20));
+  for (let a = 0; arr.length < 3; a += 1) {
+    const newNum = (getRandomInt(20));
+    if (!arr.includes(newNum)) {
+      arr.push(newNum);
+    }
   }
   let i = 0;
-  for (const number of arr) {
+  for (let j = 0; j < arr.length; j += 1) {
+    const number = arr[j];
     const userAnswer = readlineSync.question(`Question: ${number} `);
     if (isEven(number) === userAnswer) {
       console.log('Correct!');
