@@ -1,7 +1,7 @@
 install:
 	npm install
 start:
-	node src/bin/brain-calc.js
+	node src/bin/brain-gcd.js
 publish:
 	npm publish --dry-run
 lint:
