@@ -1,7 +1,7 @@
 install:
 	npm install
 start:
-	node src/bin/brain-even.js
+	node src/bin/brain-calc.js
 publish:
 	npm publish --dry-run
 lint:
