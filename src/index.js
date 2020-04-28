@@ -7,30 +7,33 @@ export const greeting = () => {
   return userName;
 };
 
-export const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
-
-export const isEven = (num) => {
-  if (num % 2 === 0) {
-    return 'yes';
-  }
-  return 'no';
+export const getRandomInt = () => {
+  const min = Math.ceil(1);
+  const max = Math.floor(20);
+  return Math.floor(Math.random() * (max - min)) + min;
 };
 
-export const getRundomArr = (num) => {
-  const arr = [];
-  for (let a = 0; arr.length < num; a += 1) {
-    const newNum = (getRandomInt(20));
-    if (!arr.includes(newNum)) {
-      arr.push(newNum);
+const gameEngine = (condition) => {
+  const userName = greeting();
+
+  let rightAnswersCounter = 0;
+
+  for (let i = 0; i < 3; i += 1) {
+    const answersPair = condition();
+    console.log(answersPair);
+
+    if (answersPair[0] === answersPair[1]) {
+      console.log('Correct!');
+      rightAnswersCounter += 1;
+    } else {
+      console.log(`"${answersPair[0]}" is a wrong answer ;(. Correct answer was "${answersPair[1]}".\nLet's try again, ${userName}!`);
+      break;
     }
   }
-  return arr;
-};
 
-export const gcd = (a, b) => {
-  if (b === 0) {
-    return a;
+  if (rightAnswersCounter === 3) {
+    console.log('Congrats!');
   }
-
-  return gcd(b, a % b);
 };
+
+export default gameEngine;

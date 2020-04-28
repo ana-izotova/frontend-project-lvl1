@@ -1,7 +1,7 @@
 install:
 	npm install
 start:
-	node src/bin/brain-gcd.js
+	node src/bin/brain-progression.js
 publish:
 	npm publish --dry-run
 lint:
