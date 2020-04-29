@@ -20,7 +20,6 @@ const gameEngine = (condition) => {
 
   for (let i = 0; i < 3; i += 1) {
     const answersPair = condition();
-    console.log(answersPair);
 
     if (answersPair[0] === answersPair[1]) {
       console.log('Correct!');
