@@ -10,9 +10,8 @@ const gameProgression = () => {
     progressionArr.push(i);
   }
 
-  const hiddenNum = getRandomInt();
+  const hiddenNum = getRandomInt(0, 10);
   const rightAnswer = progressionArr[hiddenNum];
-
   progressionArr[hiddenNum] = '..';
 
   progressionArr = progressionArr.join(' ');

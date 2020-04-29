@@ -7,10 +7,10 @@ export const greeting = () => {
   return userName;
 };
 
-export const getRandomInt = () => {
-  const min = Math.ceil(1);
-  const max = Math.floor(20);
-  return Math.floor(Math.random() * (max - min)) + min;
+export const getRandomInt = (min = 1, max = 20) => {
+  const minimum = Math.ceil(min);
+  const maximum = Math.floor(max);
+  return Math.floor(Math.random() * (maximum - minimum)) + minimum;
 };
 
 const gameEngine = (condition) => {
