@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import gameEngine, { getRandomInt } from '../index.js'
+import gameEngine, { getRandomInt } from '../index.js';
 
 const gameStartMessage = 'What number is missing in the progression?';
 
