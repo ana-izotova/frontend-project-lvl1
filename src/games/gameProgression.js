@@ -1,16 +1,17 @@
 import readlineSync from 'readline-sync';
-import { getRandomInt } from '../index.js';
+import gameEngine, { getRandomInt } from '../index.js'
+
+const gameStartMessage = 'What number is missing in the progression?';
 
 const gameProgression = () => {
-  console.log('What number is missing in the progression?');
-
   let progressionArr = [];
   const progressionStep = getRandomInt();
-  for (let i = getRandomInt(); progressionArr.length < 10; i += progressionStep) {
+  const progressionLength = 10;
+  for (let i = getRandomInt(); progressionArr.length < progressionLength; i += progressionStep) {
     progressionArr.push(i);
   }
 
-  const hiddenNum = getRandomInt(0, 10);
+  const hiddenNum = getRandomInt(0, progressionLength);
   const rightAnswer = progressionArr[hiddenNum];
   progressionArr[hiddenNum] = '..';
 
@@ -18,9 +19,10 @@ const gameProgression = () => {
 
   console.log(`Question: ${progressionArr}`);
   const userAnswer = Number(readlineSync.question('Your answer: '));
-  const answersPair = [userAnswer, rightAnswer];
 
-  return answersPair;
+  return [userAnswer, rightAnswer];
 };
 
-export default gameProgression;
+const startGameProgression = () => gameEngine(gameStartMessage, gameProgression);
+
+export default startGameProgression;

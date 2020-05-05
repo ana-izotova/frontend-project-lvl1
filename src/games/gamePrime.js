@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { getRandomInt } from '../index.js';
+import gameEngine, { getRandomInt } from '../index.js';
 
 const isPrime = (num) => {
   if (num < 2) {
@@ -15,6 +15,8 @@ const isPrime = (num) => {
   return true;
 };
 
+const gameStartMessage = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
 const gamePrime = () => {
   const num = getRandomInt();
 
@@ -25,12 +27,12 @@ const gamePrime = () => {
     rightAnswer = 'no';
   }
 
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
   console.log(`Question: ${num}`);
   const userAnswer = readlineSync.question('Your answer: ');
-  const answersPair = [userAnswer, rightAnswer];
 
-  return answersPair;
+  return [userAnswer, rightAnswer];
 };
 
-export default gamePrime;
+const startGamePrime = () => gameEngine(gameStartMessage, gamePrime);
+
+export default startGamePrime;

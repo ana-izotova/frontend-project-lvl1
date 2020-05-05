@@ -1,25 +1,31 @@
 import readlineSync from 'readline-sync';
-import { getRandomInt } from '../index.js';
+import gameEngine, { getRandomInt } from '../index.js';
 
 const isEven = (num) => {
   if (num % 2 === 0) {
-    return 'yes';
+    return true;
   }
-  return 'no';
+  return false;
 };
 
-const isEvenGame = () => {
-  console.log('Answer "yes" if the number is even, otherwise answer is "no".');
+const gameStartMessage = 'Answer "yes" if the number is even, otherwise answer is "no".';
 
+const isEvenGame = () => {
   const number = getRandomInt();
+
+  let rightAnswer = '';
+  if (isEven(number)) {
+    rightAnswer = 'yes';
+  } else {
+    rightAnswer = 'no';
+  }
 
   console.log(`Question: ${number}`);
   const userAnswer = readlineSync.question('Your answer: ');
-  const rightAnswer = isEven(number);
 
-  const answersPair = [userAnswer, rightAnswer];
-
-  return answersPair;
+  return [userAnswer, rightAnswer];
 };
 
-export default isEvenGame;
+const startIsEvenGame = () => gameEngine(gameStartMessage, isEvenGame);
+
+export default startIsEvenGame;

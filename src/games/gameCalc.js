@@ -1,9 +1,11 @@
 import readlineSync from 'readline-sync';
-import { getRandomInt } from '../index.js';
+import gameEngine, { getRandomInt } from '../index.js';
+
+const gameStartMessage = 'What is the result of the expression?';
 
 const gameCalc = () => {
   const operators = ['+', '-', '*'];
-  const operatorsIndex = Math.floor(Math.random() * 3);
+  const operatorsIndex = getRandomInt(1, operators.length);
   const operation = operators[operatorsIndex];
 
   const rundomNum1 = (getRandomInt());
@@ -21,9 +23,9 @@ const gameCalc = () => {
   console.log(`Question: ${rundomNum1} ${operation} ${rundomNum2}`);
   const userAnswer = Number(readlineSync.question('Your answer: '));
 
-  const answersPair = [userAnswer, rightAnswer];
-
-  return answersPair;
+  return [userAnswer, rightAnswer];
 };
 
-export default gameCalc;
+const startGameCalc = () => gameEngine(gameStartMessage, gameCalc);
+
+export default startGameCalc;
