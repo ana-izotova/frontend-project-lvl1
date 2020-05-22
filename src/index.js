@@ -14,10 +14,10 @@ const gameEngine = (gameMessage, conditions) => {
     const gameConditions = conditions();
     const [gameQuestion, rightAnswer] = gameConditions;
 
-    console.log(gameQuestion);
+    console.log(`Question: ${gameQuestion}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
-    if (userAnswer === rightAnswer) {
+    if (userAnswer === rightAnswer.toString()) {
       console.log('Correct!');
       rightAnswersCounter += 1;
     } else {

@@ -9,19 +9,18 @@ const gcd = (a, b) => {
   return gcd(b, a % b);
 };
 
-const gameStartMessage = 'Find the greatest common divisor of given numbers.';
+const gameMessage = 'Find the greatest common divisor of given numbers.';
 
-const generateGameGCDConditions = () => {
+const generateData = () => {
   const firstNum = getRandomInt();
   const secondNum = getRandomInt();
 
-  const rightAnswer = gcd(firstNum, secondNum).toString();
-
-  const gameQuestion = `Question: ${firstNum} ${secondNum}`;
+  const rightAnswer = gcd(firstNum, secondNum);
+  const gameQuestion = `${firstNum} ${secondNum}`;
 
   return [gameQuestion, rightAnswer];
 };
 
-const startGameGCD = () => gameEngine(gameStartMessage, generateGameGCDConditions);
+const startGameGCD = () => gameEngine(gameMessage, generateData);
 
 export default startGameGCD;

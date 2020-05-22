@@ -5,16 +5,13 @@ const isEven = (num) => num % 2 === 0;
 
 const gameMessage = 'Answer "yes" if the number is even, otherwise answer is "no".';
 
-const generateGameEvenConditions = () => {
-  const askedNumber = getRandomInt();
-
-  const rightAnswer = isEven(askedNumber) ? 'yes' : 'no';
-
-  const gameQuestion = `Question: ${askedNumber}`;
+const generateData = () => {
+  const gameQuestion = getRandomInt();
+  const rightAnswer = isEven(gameQuestion) ? 'yes' : 'no';
 
   return [gameQuestion, rightAnswer];
 };
 
-const startGameEven = () => gameEngine(gameMessage, generateGameEvenConditions);
+const startGameEven = () => gameEngine(gameMessage, generateData);
 
 export default startGameEven;

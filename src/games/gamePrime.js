@@ -15,17 +15,15 @@ const isPrime = (num) => {
   return true;
 };
 
-const gameStartMessage = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const gameMessage = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const generateGamePrimeConditions = () => {
-  const askedNumber = getRandomInt();
-
-  const rightAnswer = isPrime(askedNumber) ? 'yes' : 'no';
-  const gameQuestion = `Question: ${askedNumber}`;
+const generateData = () => {
+  const gameQuestion = getRandomInt();
+  const rightAnswer = isPrime(gameQuestion) ? 'yes' : 'no';
 
   return [gameQuestion, rightAnswer];
 };
 
-const startGamePrime = () => gameEngine(gameStartMessage, generateGamePrimeConditions);
+const startGamePrime = () => gameEngine(gameMessage, generateData);
 
 export default startGamePrime;
