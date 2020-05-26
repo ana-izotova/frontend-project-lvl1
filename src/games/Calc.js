@@ -5,24 +5,23 @@ const gameMessage = 'What is the result of the expression?';
 
 const generateData = () => {
   const operations = ['+', '-', '*'];
-  const index = getRandomInt(1, operations.length);
+  const index = getRandomInt(0, operations.length - 1);
   const operation = operations[index];
 
   const randomNum1 = (getRandomInt());
   const randomNum2 = (getRandomInt());
 
-  let result;
+  let rightAnswer;
   switch (operation) {
-    case '+': result = randomNum1 + randomNum2; break;
-    case '-': result = randomNum1 - randomNum2; break;
-    case '*': result = randomNum1 * randomNum2; break;
+    case '+': rightAnswer = randomNum1 + randomNum2; break;
+    case '-': rightAnswer = randomNum1 - randomNum2; break;
+    case '*': rightAnswer = randomNum1 * randomNum2; break;
     default: break;
   }
 
-  const rightAnswer = result;
   const gameQuestion = `${randomNum1} ${operation} ${randomNum2}`;
 
-  return [gameQuestion, rightAnswer];
+  return [gameQuestion, rightAnswer.toString()];
 };
 
 const startGameCalc = () => gameEngine(gameMessage, generateData);

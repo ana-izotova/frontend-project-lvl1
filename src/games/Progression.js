@@ -20,7 +20,7 @@ const generateData = () => {
   progression[hiddenNumIndex] = '..';
   const gameQuestion = progression.join(' ');
 
-  return [gameQuestion, rightAnswer];
+  return [gameQuestion, rightAnswer.toString()];
 };
 
 const startGameProgression = () => gameEngine(gameMessage, generateData);

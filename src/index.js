@@ -8,27 +8,24 @@ const gameEngine = (gameMessage, conditions) => {
   console.log(gameMessage);
 
   const roundQuantity = 3;
-  let rightAnswersCounter = 0;
 
   for (let i = 0; i < roundQuantity; i += 1) {
-    const gameConditions = conditions();
-    const [gameQuestion, rightAnswer] = gameConditions;
+    const [gameQuestion, rightAnswer] = conditions();
 
     console.log(`Question: ${gameQuestion}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
-    if (userAnswer === rightAnswer.toString()) {
+    if (userAnswer === rightAnswer) {
       console.log('Correct!');
-      rightAnswersCounter += 1;
     } else {
-      console.log(`"${userAnswer}" is a wrong answer ;(. Correct answer was "${rightAnswer}".\nLet's try again, ${userName}!`);
-      break;
+      console.log(`"${userAnswer}" is a wrong answer ;(. Correct answer was "${rightAnswer}".`);
+      console.log(`Let's try again, ${userName}!`);
+
+      return;
     }
   }
 
-  if (rightAnswersCounter === roundQuantity) {
-    console.log(`Congratulations, ${userName}!`);
-  }
+  console.log(`Congratulations, ${userName}!`);
 };
 
 export default gameEngine;

@@ -18,7 +18,7 @@ const generateData = () => {
   const rightAnswer = gcd(firstNum, secondNum);
   const gameQuestion = `${firstNum} ${secondNum}`;
 
-  return [gameQuestion, rightAnswer];
+  return [gameQuestion, rightAnswer.toString()];
 };
 
 const startGameGCD = () => gameEngine(gameMessage, generateData);
